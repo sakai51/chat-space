@@ -38,8 +38,7 @@ Things you may want to cover:
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|text|null: false|
-|grouo_id|integer|null: false, foreign_key: true|
+|name|text|null: false|
 ### Association
 - has_many :messages
 - has_many :groups_users
