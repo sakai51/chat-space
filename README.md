@@ -48,6 +48,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |message|text|null: false|
+|img|text|
 ### Association
 - belongs_to :user
 - belongs_to :group
