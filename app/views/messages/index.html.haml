@@ -1,0 +1,47 @@
+!!!
+%html
+  %body
+
+    .wrapper
+      = render 'shared/side_bar'
+
+      .chat-main
+        .main-header
+          .main-header__left-box
+            %h2.main-header__left-box__current-group sakaiのグループ
+            %ul.main-header__left-box__member-list
+              Member：さかい　
+              %li.member  メンバー名　
+              %li.member  メンバー名　
+              %li.member  メンバー名　
+
+          =link_to "https://www.???.com/", class: "main-header__edit-btn" do
+            Edit
+
+        .messages
+          .message
+            .message__upper-info
+              %p.message__upper-info__talker さかい
+              %p.message__upper-info__date 2019/10/01(Tue) 09:20:30
+            %p.message__text おはよう
+
+          .message
+            .message__upper-info
+              %p.message__upper-info__talker たなか
+              %p.message__upper-info__date 2019/10/01(Tue) 13:39:38
+            %p.message__text こんにちは
+
+          .message
+            .message__upper-info
+              %p.message__upper-info__talker まつもと
+              %p.message__upper-info__date 2019/10/01(Tue) 19:22:55
+            %p.message__text さようなら
+        .form
+          %form
+            %input.form__message
+            .form__mask
+              %label.form__mask__image
+                = fa_icon 'picture-o', class: 'icon'
+                %input.hidden{type: 'file'}
+            =link_to "https://www.???.com/", class: "form__submit" do
+              Send

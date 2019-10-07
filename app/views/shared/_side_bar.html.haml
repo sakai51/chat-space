@@ -1,0 +1,17 @@
+-# index.html.erbのhamlの部分テンプレート
+.chat-side
+  .side-header
+    .side-header__box
+      %p.side-header__box__user-name さかい
+      .side-header__box__menu
+        =link_to "https://www.???.com/", class: "side-header__box__menu__new-group" do
+          = fa_icon 'edit' , class: "fa-white"
+        =link_to "https://www.???.com/", class: "side-header__box__menu__new-group" do
+          = fa_icon 'cog' , class: "fa-white"
+
+  .groups
+    .group
+      =link_to "https://www.???.com/", class: "group__group-name" do
+        sakaiのグループ
+      =link_to "https://www.???.com/", class: "group__latest-message" do
+        さようなら
