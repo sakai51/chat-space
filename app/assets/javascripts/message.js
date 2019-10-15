@@ -46,9 +46,7 @@ $(document).on('turbolinks:load', function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('#message_content').val(''); //文字だけリセット→これはうまくいくけど、文字だけのリセット
       $('form')[0].reset();
-      // これを記述するとプログラムが動かない。送信が１回しかできなくなり、リセットもされない
       scrollBottom(); //送信後スクロースする関数呼び出し
 
     })
