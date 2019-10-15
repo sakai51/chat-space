@@ -4,44 +4,120 @@
 
     .wrapper
       = render 'shared/side_bar'
+      
+      .chat
+        .header
+          .left-header
+            .left-header__title
+              = @group.name
+            %ul.left-header__members
+              Member：
+              - @group.users.each do |user|
+                %li.member
+                  = user.name
+          -# ここでのグループは1つしかないからrender @groupsは使えない
+          .right-header
+            = link_to edit_group_path(@group.id), class: "right-header__button" do
+              Edit
 
-      .chat-main
-        .main-header
-          .main-header__left-box
-            %h2.main-header__left-box__current-group sakaiのグループ
-            %ul.main-header__left-box__member-list
-              Member：さかい　
-              %li.member  メンバー名　
-              %li.member  メンバー名　
-              %li.member  メンバー名　
-
-          =link_to "https://www.???.com/", class: "main-header__edit-btn" do
-            Edit
+            -# .right-header__button
+            -#   Edit
 
         .messages
-          .message
-            .message__upper-info
-              %p.message__upper-info__talker さかい
-              %p.message__upper-info__date 2019/10/01(Tue) 09:20:30
-            %p.message__text おはよう
+          = render @messages
+          -#   .upper-message
+          -#     .upper-message__user-name
+          -#       メンバー
+          -#     .upper-message__date
+          -#       2017/04/04
+          -#   .lower-meesage
+          -#     .lower-message__content
+          -#       メッセージ
+          -# .message
+          -#   .upper-message
+          -#     .upper-message__user-name
+          -#       メンバー
+          -#     .upper-message__date
+          -#       2017/04/04
+          -#   .lower-meesage
+          -#     .lower-message__content
+          -#       メッセージ
+          -# .message
+          -#   .upper-message
+          -#     .upper-message__user-name
+          -#       メンバー
+          -#     .upper-message__date
+          -#       2017/04/04
+          -#   .lower-meesage
+          -#     .lower-message__content
+          -#       メッセージ
 
-          .message
-            .message__upper-info
-              %p.message__upper-info__talker たなか
-              %p.message__upper-info__date 2019/10/01(Tue) 13:39:38
-            %p.message__text こんにちは
-
-          .message
-            .message__upper-info
-              %p.message__upper-info__talker まつもと
-              %p.message__upper-info__date 2019/10/01(Tue) 19:22:55
-            %p.message__text さようなら
         .form
-          %form
-            %input.form__message
+          = form_for [@group, @message] do |f|
+            = f.text_field :content, class: 'form__message', placeholder: 'type a message'
             .form__mask
-              %label.form__mask__image
+              = f.label :image, class: 'form__mask__image' do
                 = fa_icon 'picture-o', class: 'icon'
-                %input.hidden{type: 'file'}
-            =link_to "https://www.???.com/", class: "form__submit" do
-              Send
+                = f.file_field :image, class: 'hidden'
+            = f.submit 'Send', class: 'form__submit'
+
+        -# .form
+        -#   %form
+        -#     %input.form__message
+        -#     .form__mask
+        -#       %label.form__mask__image
+        -#         = fa_icon 'picture-o', class: 'icon'
+        -#         %input.hidden{type: 'file'}
+        -#     %input.form__submit{type: 'submit', value: 'Send'}
+
+
+      -# .chat-main
+      -#   .main-header
+      -#     .main-header__left-box
+      -#       %h2.main-header__left-box__current-group sakaiのグループ
+      -#       %ul.main-header__left-box__member-list
+      -#         Member：さかい　
+      -#         %li.member  メンバー名　
+      -#         %li.member  メンバー名　
+      -#         %li.member  メンバー名　
+
+      -#     =link_to "https://www.???.com/", class: "main-header__edit-btn" do
+      -#       Edit
+
+      -#   .messages
+      -#     .message
+      -#       .message__upper-info
+      -#         %p.message__upper-info__talker さかい
+      -#         %p.message__upper-info__date 2019/10/01(Tue) 09:20:30
+      -#       %p.message__text おはよう
+
+      -#     .message
+      -#       .message__upper-info
+      -#         %p.message__upper-info__talker たなか
+      -#         %p.message__upper-info__date 2019/10/01(Tue) 13:39:38
+      -#       %p.message__text こんにちは
+
+      -#     .message
+      -#       .message__upper-info
+      -#         %p.message__upper-info__talker まつもと
+      -#         %p.message__upper-info__date 2019/10/01(Tue) 19:22:55
+      -#       %p.message__text さようなら
+
+      -#   -# .form
+      -#   -#   = form_for [@group, @message] do |f|
+      -#   -#     = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      -#   -#     .form__mask
+      -#   -#       = f.label :image, class: 'form__mask__image' do
+      -#   -#         = fa_icon 'picture-o', class: 'icon'
+      -#   -#         = f.file_field :image, class: 'hidden'
+      -#   -#     = f.submit 'Send', class: 'form__submit'
+
+      -#   .form
+      -#     %form
+      -#       %input.form__message{:placeholder => "　type a message"}/
+      -#       .form__mask
+      -#         %label.form__mask__image
+      -#           = fa_icon 'picture-o', class: 'icon'
+      -#           %input.hidden{type: 'file'}
+      -#       =link_to "https://www.???.com/", class: "form__submit" do
+      -#         Send

@@ -1,17 +1,62 @@
--# index.html.erbのhamlの部分テンプレート
-.chat-side
-  .side-header
-    .side-header__box
-      %p.side-header__box__user-name さかい
-      .side-header__box__menu
-        =link_to "https://www.???.com/", class: "side-header__box__menu__new-group" do
-          = fa_icon 'edit' , class: "fa-white"
-        =link_to "https://www.???.com/", class: "side-header__box__menu__new-group" do
-          = fa_icon 'cog' , class: "fa-white"
-
+.side-bar
+  .header
+    %h3.header__name
+      = current_user.name
+    %ul.header__lists
+      %li.list
+        = link_to new_group_path do
+          = fa_icon 'pencil-square-o', class: 'icon'
+      %li.list
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog', class: 'icon'
   .groups
-    .group
-      =link_to "https://www.???.com/", class: "group__group-name" do
-        sakaiのグループ
-      =link_to "https://www.???.com/", class: "group__latest-message" do
-        さようなら
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            = group.show_last_message
+
+-# 1008作成
+-# .side-bar
+-#   .header
+-#     %h3.header__name
+-#       = current_user.name
+-#     %ul.header__lists
+-#       %li.list
+-#         = link_to new_group_path do
+-#           = fa_icon 'pencil-square-o', class: 'icon'
+-#       %li.list
+-#         = link_to edit_user_path(current_user) do
+-#           = fa_icon 'cog', class: 'icon'
+-#   .groups
+-#     - current_user.groups.each do |group|
+-#       .group
+-#         = link_to group_messages_path(group) do
+-#           .group__name
+-#             = group.name
+-#           .group__message
+-#             メッセージはまだありません。
+
+
+-# -# index.html.erbのhamlの部分テンプレート
+-# .chat-side
+-#   .side-header
+-#     .side-header__box
+-#       %p.side-header__box__user-name
+-#         = current_user.name
+-#       .side-header__box__menu
+-#         = link_to new_group_path do
+-#           = fa_icon 'edit' , class: "fa-white"
+-#         = link_to edit_user_path(current_user) do
+-#           = fa_icon 'cog', class: 'fa-white'
+
+-#   .groups
+-#     .group
+-#       - current_user.groups.each do |group|
+-#         = link_to '#' do
+-#           .group__name
+-#             = group.name
+-#           .group__message
+-#             メッセージはまだありません。
