@@ -32,7 +32,6 @@ $(document).on('turbolinks:load', function() {
 
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
-    // console.log(this)
     var message = new FormData(this); //フォームに入力した値を取得
     var url = $(this).attr('action'); // var url = (window.location.href)でもOK
     $.ajax({  
