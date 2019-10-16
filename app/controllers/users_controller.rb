@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    # @users = User.where('name LIKE(?)',"%#{params[:keyword]}%") #「?」はプレースホルダと言うもので、第2引数の値を「?」へ置き換えるための目印です。
-    @users = User.where('name LIKE(?) and id != ?', "#{params[:name]}%", current_user)
+    @users = User.where('name LIKE(?) and id != ?', "#{params[:name]}%", current_user) #「?」はプレースホルダと言うもので、第2引数の値を「?」へ置き換えるための目印です。
     respond_to do |format|
       format.html
       format.json
