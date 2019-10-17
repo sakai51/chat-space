@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {
   var buildHTML = function(message) {
     var content = message.content ? `${ message.content }` : "";
+    var img = message.image ? `<img src= ${ message.image } class="lower-message__image">` : "";
     if (content && message.image) {
       //data-idが反映されるようにしている
       var html = '<div class="message" data-message-id=' + message.id + '>' +
@@ -16,7 +17,7 @@ $(document).on('turbolinks:load', function() {
           '<p class="lower-message__content">' +
             content +
           '</p>' +
-          '<img src="' + message.image + '" class="lower-message__image" >' +
+          img +
         '</div>' +
       '</div>'
     } else if (content) {
@@ -48,7 +49,7 @@ $(document).on('turbolinks:load', function() {
           '</div>' +
         '</div>' +
         '<div class="lower-message">' +
-          '<img src="' + message.image + '" class="lower-message__image" >' +
+          img +
         '</div>' +
       '</div>'
     };
