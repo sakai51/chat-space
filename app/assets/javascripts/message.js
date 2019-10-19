@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function() {
     }, 300, 'swing');
   }
 
-  // インクリメンタルサーチの実装
+  //非同期通信の実装
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var message = new FormData(this);
@@ -78,9 +78,9 @@ $(document).on('turbolinks:load', function() {
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         })
       })
-      .fail(function () {
-        alert('自動更新に失敗しました');
-      });
+      // .fail(function () {
+      //   alert('自動更新に失敗しました');
+      // });
     }
   };
   setInterval(reloadMessages, 5000);
